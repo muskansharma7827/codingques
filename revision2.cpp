@@ -308,3 +308,488 @@ That's one reason the XOR trick isn't a generally preferable swapping implementa
 The **temporary-variable approach is much easier to understand and safer for normal interview code.**
 */ 
 
+/*
+#include<bits/stdc++.h>
+using namespace std;
+int checkpallindrome(int &n){
+   int rev=0;
+   int digits ;
+   int original = n;
+   //logic
+   if(n < 0){
+      n = abs(n);
+      original = abs(n);
+   }
+   while(n > 0){
+      digits = n%10;
+      rev = rev*10+n;
+      n=n/10;
+   }
+   if(original == rev){
+      cout << "pallindrome.";
+   }
+   else{
+      cout << "not pallindrome.";
+   }
+}
+int main(){
+   int n;
+   cin >> n;
+   checkpallindrome(n);
+    return 0;
+}
+
+*/
+/*
+#include<bits/stdc++.h>
+using namespace std;
+void checkpallindrome(int n){
+   string s = to_string(n);
+   
+   int slow = 0;
+   int fast = s.size()-1;
+
+   while(slow < fast){
+      if(s[slow] == s[fast]){
+         slow++;
+         fast--;
+      }
+      else{
+         cout << "not pallindrome.";
+         return;
+      
+      }
+   }
+   cout << "pallindrome.";
+}
+int main(){
+   int n;
+   cin >> n;
+   checkpallindrome(n);
+   return 0;
+}
+   */
+
+/*
+#include<bits/stdc++.h>
+using namespace std;
+int checkpallindrome(int n){
+   string s = to_string(n);
+   int slow = 0;
+   int fast = s.size()-1;
+   while(slow < fast){
+      if(s[slow] == s[fast]){
+         slow++;
+         fast--;
+      }
+      else{
+         return 0;
+      }
+      
+   }
+   return 1;
+
+}
+int main(){
+   int n;
+   cin >> n;
+   
+   if(checkpallindrome(n)){
+      cout << "pallindrome";
+   }
+   else{
+      cout << "not";
+   }
+}
+  
+*/
+
+//in thus above case, whatrver u write void,int if inut neter -121 and tell ignore negative sign , so u will write 
+/*
+class Solution {
+  public:
+    bool isPalindrome(int n) {
+        if(n < 0){
+            n = abs(n);
+        }
+        string s = to_string(n);
+        int slow=0;
+        int fast=s.size()-1;
+        
+        while(slow<fast){
+            if(s[slow]==s[fast]){
+                slow++;
+                fast--;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+        
+    }
+};
+that's it.
+*/
+
+
+/*
+why use void in function , also can use int, yes.then if void, is used means not to return nathung, and also wnat to stope teh function, bcz if slow>fast in case, so, ythe funcytion ks su[posed to end, thta's why use return,
+if used int chackpallindrome, so, return 0 or 1 will be used, means have to stope teh function but give the value 0 or 1 which means false or true, back to the caller, so, the value will be back as 0/1 means false/true, and cout statements to check- 
+if(chackpallindrome(n){
+    cout << "pallindrome";          //return 1=pallindrome
+}
+    else{
+    cout << "not pallindrome";     //return 0-not plalindrome
+    }
+
+    now, why not use & with n in function-
+Only READ n       → int n
+READ + CHANGE n  → int &n
+in this case, i ma just checking it if iis a apllaindrome o not, in swapping i am chnaging the vlues of teh varviles,swapping it, thta's why needed &.
+*/
+
+//now, reverse a string an dcheckoriginal string with teh reversed strung will it be equal or not, it is same like revrsed method, it is just teh diffrenve thta the string is getting revrsed in earkler reversed method, teh number gets revrsed.
+/*
+#include<bits/stdc++.h>
+using namespace std;
+bool checkpallindrome(int n){
+   if(n < 0){
+      n = abs(n);
+   }
+   string s = to_string(n);
+   string rev = s;
+   reverse(s.begin(),s.end());
+   if(s == rev){
+      return true;
+   }
+   else{
+      return false;
+   }
+}
+int main(){
+   int n;
+   cin >> n;
+
+   if(checkpallindrome(n)){
+      cout << "pallindrome";
+   }
+   else{
+      cout << "not";
+   }
+
+}
+*/
+/*
+**INTERVIEW QUES**
+Absolutely. If you know these **3 approaches**:
+
+1. **Reverse the number mathematically**
+2. **Convert number → string and use `reverse()`**
+3. **Convert number → string and compare characters from both ends**
+
+then an interviewer can ask questions around **logic, complexity, edge cases, and why you chose one approach**.
+
+### 🔥 Most likely interview questions
+
+#### 1. What is a palindrome number?
+
+A number that reads the same forward and backward.
+
+Example:
+
+```text
+121 → palindrome
+123 → not palindrome
+```
+
+---
+
+#### 2. How many approaches do you know?
+
+You can say:
+
+> “I know three approaches: reversing the number using arithmetic, converting the number to a string and reversing it, and checking the string using two pointers.”
+
+---
+
+#### 3. Which approach would you choose in an interview?
+
+They may ask **why**.
+
+You can say:
+
+> “If the interviewer wants a pure mathematical approach, I would use number reversal. If string operations are allowed, the string approach is simpler to implement.”
+
+Don't just say one is "better"; explain based on the requirement.
+
+---
+
+#### 4. What is the time complexity?
+
+For number reversal:
+
+```text
+O(d)
+```
+
+where `d` = number of digits.
+
+For string approaches:
+
+```text
+O(d)
+```
+
+because you process the digits.
+
+Space:
+
+* Mathematical reversal → **O(1)**
+* String approach → **O(d)**
+
+---
+
+#### 5. Why do we use `% 10` when reversing a number?
+
+For:
+
+```text
+123
+```
+
+```cpp
+123 % 10 = 3
+```
+
+So `% 10` gives us the **last digit**.
+
+Then:
+
+```cpp
+123 / 10 = 12
+```
+
+removes the last digit.
+
+---
+
+#### 6. Why do we use `rev = rev * 10 + digit`?
+
+This is a **very common follow-up**.
+
+For `123`:
+
+```text
+rev = 0
+
+digit = 3
+rev = 0 * 10 + 3 = 3
+
+digit = 2
+rev = 3 * 10 + 2 = 32
+
+digit = 1
+rev = 32 * 10 + 1 = 321
+```
+
+---
+
+#### 7. What happens with negative numbers?
+
+For example:
+
+```text
+-121
+```
+
+You need to decide how your program should treat it.
+
+If you do:
+
+```cpp
+if(n < 0)
+    n = abs(n);
+```
+
+then `-121` becomes `121`, so your program considers it a palindrome.
+
+But an interviewer may ask:
+
+> **"Should -121 actually be considered a palindrome?"**
+
+You should say:
+
+> “It depends on the problem definition. If the problem considers the sign, then -121 is not a palindrome. If we're checking only the digits, we can take its absolute value.”
+
+That's a good interview answer.
+
+---
+
+#### 8. What happens with `0`?
+
+```text
+0 → palindrome
+```
+
+Your code handles this correctly.
+
+---
+
+#### 9. What happens with trailing zeros?
+
+Example:
+
+```text
+120
+```
+
+Reverse:
+
+```text
+021 → 21
+```
+
+So:
+
+```text
+120 ≠ 21
+```
+
+Therefore it is **not a palindrome**.
+
+They may specifically ask this to see whether you understand that leading zeros disappear when using an integer.
+
+---
+
+#### 10. Why do you use `bool` for the function?
+
+Because the function has only two possible answers:
+
+```text
+true  → palindrome
+false → not palindrome
+```
+
+So:
+
+```cpp
+bool checkPalindrome(int n)
+```
+
+is appropriate.
+
+---
+
+### 🧠 Questions specifically about your string approach
+
+They can ask:
+
+**"Why did you write `string rev = s`?"**
+
+Answer:
+
+> “I create a copy of the original string so that I can reverse one string and compare it with the original.”
+
+For example:
+
+```text
+s   = "121"
+rev = "121"
+```
+
+Then reverse `s`:
+
+```text
+s   = "121"
+rev = "121"
+```
+
+Compare:
+
+```cpp
+s == rev
+```
+
+---
+
+### ⭐ Very important: interviewer may ask you to do it WITHOUT `reverse()`
+
+They might say:
+
+> "You converted it to a string, but don't use the built-in `reverse()` function."
+
+Then you can use **two pointers**:
+
+```text
+121
+↑   ↑
+L   R
+```
+
+Compare:
+
+```text
+s[L] == s[R]
+```
+
+Then move:
+
+```text
+L++
+R--
+```
+
+For `1221`:
+
+```text
+1 == 1
+2 == 2
+```
+
+Therefore palindrome.
+
+---
+
+### 🔥 And the big interview follow-ups
+
+Be prepared for these:
+
+* What is a palindrome?
+* Explain your approach.
+* Why `% 10`?
+* Why `/ 10`?
+* Why `rev * 10 + digit`?
+* Why `bool`?
+* Time complexity?
+* Space complexity?
+* What about negative numbers?
+* What about `0`?
+* What about `120`?
+* Can you solve it without converting to a string?
+* Can you solve it without `reverse()`?
+* Can you solve it using two pointers?
+* Can you avoid reversing the **entire** number?
+* What if the number is very large and causes integer overflow?
+* Can you write the function separately?
+* Why are you calling the function twice in your original code?
+
+That **last one actually applies to the code you just showed me**. Your original `main()` had:
+
+```cpp
+checkpallindrome(n);
+
+if(checkpallindrome(n))
+```
+
+An interviewer could notice that and ask why you're calling the function twice. The correct answer is: **the first call is unnecessary because you don't use its returned value.**
+*/
+// **pallindrome of a number - 4 appraoches- reversed,string,string+reverse, also stack(study the approach for interview) , also only reverse the first half and compare.**
+/*
+Mathematical reverse       → O(d) time, O(1) space
+String + reverse           → O(d) time, O(d) space   //no.of digits to store and another copy in rev
+String + two pointers      → O(d) time, O(d) space   //no.of digits to store and another copy in rev
+Stack                      → O(d) time, O(d) space
+Half-number reverse        → O(d) time, O(1) space
+d is no.of digits.
+*/
