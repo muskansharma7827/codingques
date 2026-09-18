@@ -449,7 +449,7 @@ READ + CHANGE n  → int &n
 in this case, i ma just checking it if iis a apllaindrome o not, in swapping i am chnaging the vlues of teh varviles,swapping it, thta's why needed &.
 */
 
-//now, reverse a string an dcheckoriginal string with teh reversed strung will it be equal or not, it is same like revrsed method, it is just teh diffrenve thta the string is getting revrsed in earkler reversed method, teh number gets revrsed.
+//now, reverse a string and checkoriginal string with teh reversed strung will it be equal or not, it is same like revrsed method, it is just teh diffrenve thta the string is getting revrsed in earkler reversed method, teh number gets revrsed.
 /*
 #include<bits/stdc++.h>
 using namespace std;
@@ -794,13 +794,16 @@ Half-number reverse        → O(d) time, O(1) space
 d is no.of digits.
 */
 
+/*
 #include<bits/stdc++.h>
 using namespace std;
 int reversedigits(int n){
    int digits;
    int rev=0;
+   int sign = 1;
    //logic
    if(n < 0){
+      sign = -1;
       n = abs(n);
    }
    if(n ==0){
@@ -812,10 +815,7 @@ int reversedigits(int n){
    rev=rev*10+digits;
    n=n/10;
    }
-   return rev;
-
-
-
+   return rev*sign;
 }
 int main(){
    int n;
@@ -823,4 +823,370 @@ int main(){
    int digit = reversedigits(n);
    cout << digit << endl;
    return 0;
+}
+*/
+
+/*
+#include<bits/stdc++.h>
+using namespace std;
+int reversed(int n){
+int sign = 1;
+   if(n < 0){
+      n = abs(n);
+      sign = -1;
+
+   }
+   string s = to_string(n);
+   int slow=0;
+   int fast=s.size()-1;
+   reverse(s.begin(),s.end());
+   n = stoi(s);
+   return n*sign;
+}
+int main(){
+   int n;
+   cin >> n;
+   int n1 = reversed(n);
+   cout << n1 <<endl;
+   return 0;
+}
+ 
+*/
+
+/*
+1. Arithmetic / Digit Approach
+Time = O(d) = O(log n)
+Space = O(1)
+2. String Approach
+Time = O(d) = O(log n)
+Space = O(d) = O(log n)
+
+Where:
+
+d = number of digits in n
+*/
+
+/* **INTERVIEW**
+Yes. For **“Reverse a Number”**, don't prepare 20 random variations. Prepare the questions in the order an interviewer is most likely to ask them.
+
+## 1. Basic coding question ⭐⭐⭐
+
+**Q1. Reverse the digits of an integer.**
+
+Example:
+
+```text
+Input: 12345
+Output: 54321
+```
+
+You should immediately write your **arithmetic approach**:
+
+```cpp
+digits = n % 10;
+rev = rev * 10 + digits;
+n = n / 10;
+```
+
+This is the **most important question**.
+
+---
+
+## 2. Explain your logic ⭐⭐⭐
+
+After you write the code, they may ask:
+
+**Q2. Why are you using `n % 10`?**
+
+Answer:
+
+> `n % 10` gives me the last digit of the number.
+
+Example:
+
+```text
+123 % 10 = 3
+```
+
+**Q3. Why are you doing `n = n / 10`?**
+
+> It removes the last digit.
+
+```text
+123 / 10 = 12
+12 / 10 = 1
+```
+
+**Q4. Why `rev = rev * 10 + digits`?**
+
+This builds the reversed number.
+
+For `123`:
+
+```text
+rev = 0
+
+digit = 3
+rev = 0*10 + 3 = 3
+
+digit = 2
+rev = 3*10 + 2 = 32
+
+digit = 1
+rev = 32*10 + 1 = 321
+```
+
+---
+
+## 3. Complexity ⭐⭐⭐
+
+**Q5. What is the time complexity?**
+
+Say:
+
+> **O(d)**, where `d` is the number of digits.
+
+You can also say **O(log n)**.
+
+**Q6. What is the space complexity?**
+
+For your arithmetic approach:
+
+> **O(1)** because I only use a few variables.
+
+---
+
+## 4. Edge cases ⭐⭐⭐
+
+They can give you:
+
+### Q7. What happens with `0`?
+
+```text
+0 → 0
+```
+
+### Q8. What happens with trailing zeros?
+
+```text
+1200 → 21
+```
+
+Why?
+
+Because mathematically:
+
+```text
+0012 = 12
+```
+
+So the output is `21`.
+
+### Q9. What about a negative number?
+
+```text
+-123 → -321
+```
+
+Your code handles this using:
+
+```cpp
+int sign = 1;
+
+if(n < 0){
+    n = abs(n);
+    sign = -1;
+}
+```
+
+Then:
+
+```cpp
+return sign * rev;
+```
+
+---
+
+# 5. String approach ⭐⭐
+
+After your arithmetic solution, the interviewer might say:
+
+**Q10. Can you solve it using strings?**
+
+Then you can write your second approach:
+
+```cpp
+string s = to_string(n);
+reverse(s.begin(), s.end());
+```
+
+For negative numbers, you already know how to preserve the sign.
+
+They may then ask:
+
+**Q11. Which approach uses extra space?**
+
+Arithmetic:
+
+```text
+O(1)
+```
+
+String:
+
+```text
+O(d)
+```
+
+because you create a string containing the digits.
+
+---
+
+# 6. They may connect it to palindrome ⭐⭐⭐
+
+This is a **very likely follow-up** because reversing a number is directly related to palindrome.
+
+**Q12. How would you check if a number is a palindrome?**
+
+Example:
+
+```text
+121 → palindrome
+123 → not palindrome
+```
+
+You can reverse it and compare:
+
+```cpp
+if(n == reversedNumber)
+```
+
+They may ask:
+
+**Q13. Can you check palindrome without actually reversing the entire number?**
+
+That's a slightly higher-level follow-up. You can learn it after you're comfortable with your current approach.
+
+---
+
+# 7. Possible tricky follow-ups ⭐⭐
+
+### Q14. What happens to `10`?
+
+```text
+10 → 1
+```
+
+### Q15. What happens to `1000`?
+
+```text
+1000 → 1
+```
+
+### Q16. What happens to a single-digit number?
+
+```text
+7 → 7
+```
+
+### Q17. Can you reverse without converting to a string?
+
+**Yes.**
+
+That's exactly your arithmetic approach.
+
+### Q18. Can you reverse without using the library `reverse()`?
+
+**Yes.**
+
+Again, your arithmetic approach does it without `reverse()`.
+
+---
+
+# 8. One important interview issue: overflow
+
+A stronger interviewer may ask:
+
+**Q19. What if the reversed number doesn't fit inside `int`?**
+
+For example, an integer can have a limited range.
+
+This becomes an **integer overflow** problem.
+
+You don't need to panic about this right now. Just know that a production/LeetCode-style solution may require checking whether the next operation would overflow before doing:
+
+```cpp
+rev = rev * 10 + digits;
+```
+
+---
+
+# Your preparation checklist
+
+For **Reverse a Number**, I want you to be able to answer these without help:
+
+```text
+✓ 1. Write the arithmetic solution
+✓ 2. Explain n % 10
+✓ 3. Explain n / 10
+✓ 4. Explain rev * 10 + digit
+✓ 5. Dry run 123
+✓ 6. Handle 0
+✓ 7. Handle trailing zeros
+✓ 8. Handle negative numbers
+✓ 9. Give TC = O(d)
+✓ 10. Give SC = O(1)
+✓ 11. Write string approach
+✓ 12. Give string approach SC = O(d)
+✓ 13. Explain palindrome connection
+✓ 14. Know overflow exists
+```
+
+**If you can confidently do these, you are well-prepared for the normal interview question “Reverse a Number.”**
+
+*/
+/*
+#include<bits/stdc++.h>
+using namespace std;
+int countdigits( int n){
+   int count = 0;
+   while(n < 0){
+      n = abs(n);
+   }
+   if(n == 0){
+      return 1;
+   }
+   while(n > 0){
+      n = n/10;
+      count++;
+     }
+     return count;
+}
+int main(){
+   int n;
+   cin >> n;
+   int c = countdigits(n);
+   cout << c;
+   return 0;
+}
+*/
+
+#include<bits/stdc++.h>
+using namespace std;
+int countdigits(int n){
+   if(n < 0){
+      n = abs(n);
+   }
+   if(n == 0){
+      return 1;
+   }
+   int count = floor(log10(n) + 1);
+   return count;
+}
+int main(){
+   int n;
+    cin >> n;
+    int c1 = countdigits(n);
+    cout << c1;
+    return 0;
 }
