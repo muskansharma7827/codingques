@@ -793,3 +793,34 @@ Stack                      → O(d) time, O(d) space
 Half-number reverse        → O(d) time, O(1) space
 d is no.of digits.
 */
+
+#include<bits/stdc++.h>
+using namespace std;
+int reversedigits(int n){
+   int digits;
+   int rev=0;
+   //logic
+   if(n < 0){
+      n = abs(n);
+   }
+   if(n ==0){
+      return 0;
+   }
+   
+   while(n > 0){
+   digits=n%10;
+   rev=rev*10+digits;
+   n=n/10;
+   }
+   return rev;
+
+
+
+}
+int main(){
+   int n;
+   cin >> n;
+   int digit = reversedigits(n);
+   cout << digit << endl;
+   return 0;
+}
