@@ -5,7 +5,7 @@ int main(){
     int b = 10000;
     cout << "the values of a and b before swapping : " << a << " " << b   ;
     a = a + b;   // 30
-    b = a-b;         // 30 - 20 = 10 i.e. a-b = b
+    b = a - b;         // 30 - 20 = 10 i.e. a-b = b
     a = a - b;    // 30-10=20
 
 
