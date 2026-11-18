@@ -1,0 +1,121 @@
+/*
+#include<bits/stdc++.h>
+using namespace std;    
+void isPrime(int n){
+    if(n < 2){
+        cout << "Not Prime" << endl;
+        return;
+    }
+    for(int i = 2 ; i*i <= n ; i++){
+        if(n % i == 0){
+            cout << "Not Prime" << endl;
+            return;
+        }
+    }
+    cout << "Prime" << endl;
+}
+void checkprimeinrange(int a, int b){
+    for(int n = a ; n <= b; n++){
+        isPrime(n);
+    }
+    return;
+}
+
+int main(){
+    int a, b;
+    cin >> a >> b;
+    checkprimeinrange(a,b);
+    return 0;
+}
+*/
+
+/*
+#include<bits/stdc++.h>
+using namespace std;
+void factorial(int n){
+    long long fact = 1;
+    if(n == 0){
+        cout << "1";
+        return;
+    }
+    for(int i = n ; i >= 1 ; i--){
+        fact = fact * i;
+    }
+    cout << fact;
+    return;
+}
+int main(){
+    int n;
+    cin >> n;
+    factorial(n);
+    return 0;
+}
+    */
+/*
+#include<bits/stdc++.h>
+using namespace std;
+void fibonacci(int n){
+    int a  = 0;
+    int b= 1;
+    for(int i = 0; i < n;i++){
+        cout << a;
+        int c = a + b;
+        a = b;
+        b = c;
+    }
+    return;
+}
+int main(){
+    int n;
+    cin >> n;
+    fibonacci(n);
+    return 0;
+}
+    */
+
+    //find nth fibonacci number
+/*
+#include<bits/stdc++.h>
+using namespace std;
+void fib(int n){
+    if(n <= 1)
+    return ;
+
+    int a =0;
+    int b=1;
+    for(int i=2;i<=n;i++){
+        int c=a+b;
+        a=b;
+        b=c;
+    }
+    cout << b;
+    return;
+}
+int main(){
+    int n;
+    cin >> n;
+    fib(n);
+    return 0;
+}
+    */
+
+
+//recursive fibonacci
+#include<bits/stdc++.h>
+using namespace std;
+int fib(int n){
+    if(n <= 1)
+    return n;
+
+    return fib(n-1) + fib(n-2);
+}
+int main(){
+    int n;
+    cin >> n;
+    cout <<fib(n);
+    return 0;
+}
+ //recursive fib- 
+ //tc-o(2^n) and sc-o(n)
+ //iterative fib-
+ //tc-o(n) and sc-o(1)

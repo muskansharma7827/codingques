@@ -255,6 +255,13 @@ int main(){
 using namespace std;
 void countdigits(int &n){
     int count = 0;
+    if(n == 0){
+        cout << 1;
+        return;
+    }
+    if(n < 0){
+        n = abs(n);
+    }
     while(n > 0){
         n = n / 10;
         count++;
@@ -400,4 +407,3 @@ int main(){
     return 0;
 }
     */
-
