@@ -77,9 +77,9 @@ int main(){
 /*
 #include<bits/stdc++.h>
 using namespace std;
-void fib(int n){
+int fib(int n){
     if(n <= 1)
-    return ;
+    return n;
 
     int a =0;
     int b=1;
@@ -88,13 +88,13 @@ void fib(int n){
         a=b;
         b=c;
     }
-    cout << b;
-    return;
+    
+    return b;
 }
 int main(){
     int n;
     cin >> n;
-    fib(n);
+     fib(n);
     return 0;
 }
     */
