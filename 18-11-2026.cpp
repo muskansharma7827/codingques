@@ -1,22 +1,26 @@
 /*
 #include<bits/stdc++.h>
 using namespace std;    
-void isPrime(int n){
+bool isPrime(int n){
     if(n < 2){
-        cout << "Not Prime" << endl;
-        return;
+        
+        return false;
     }
     for(int i = 2 ; i*i <= n ; i++){
         if(n % i == 0){
-            cout << "Not Prime" << endl;
-            return;
+            
+            return false;
         }
     }
-    cout << "Prime" << endl;
+    
+    return true;
 }
 void checkprimeinrange(int a, int b){
     for(int n = a ; n <= b; n++){
-        isPrime(n);
+        if(isPrime(n)){
+            cout << n;
+        }
+        
     }
     return;
 }
@@ -29,7 +33,8 @@ int main(){
 }
 */
 
-/*
+
+
 #include<bits/stdc++.h>
 using namespace std;
 void factorial(int n){
@@ -38,7 +43,7 @@ void factorial(int n){
         cout << "1";
         return;
     }
-    for(int i = n ; i >= 1 ; i--){
+    for(int i = 1 ; i <= n ; i++){
         fact = fact * i;
     }
     cout << fact;
@@ -50,7 +55,7 @@ int main(){
     factorial(n);
     return 0;
 }
-    */
+    
 /*
 #include<bits/stdc++.h>
 using namespace std;
@@ -58,10 +63,10 @@ void fibonacci(int n){
     int a  = 0;
     int b= 1;
     for(int i = 0; i < n;i++){
-        cout << a;
+        
         int c = a + b;
-        a = b;
-        b = c;
+        b = a;
+        c = b;
     }
     return;
 }
@@ -101,6 +106,7 @@ int main(){
 
 
 //recursive fibonacci
+/*
 #include<bits/stdc++.h>
 using namespace std;
 int fib(int n){
@@ -119,3 +125,4 @@ int main(){
  //tc-o(2^n) and sc-o(n)
  //iterative fib-
  //tc-o(n) and sc-o(1)
+ */

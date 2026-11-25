@@ -1,17 +1,18 @@
 #include<bits/stdc++.h>
 using namespace std;   
-int checkGCD(int a , int b){
-    while(b != 0){
-        int rem = a % b;
+void  checkGCD(int a , int b){
+    while(b > 0){
+        int rem= a%b;
         a = b;
         b = rem;
     }
-    return a;
+    cout << a;
+    return ;
 } 
 int main(){
     int a , b;
     cin >> a >> b;
-    cout << checkGCD(a,b);
+    checkGCD(a,b);
     return 0;
 }
 

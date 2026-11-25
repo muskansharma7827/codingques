@@ -22,13 +22,14 @@ void swapping (int &a, int &b){
     a = a^b;    
     b = a^b;     //b=a^b^b=a^0=a
     a = a^b;     //a=a^b^a=0^b=b
-
+cout << a << " " << b;
+return;
 }
 int main(){
     int a, b;
     cin >> a >> b;
     swapping(a, b);
-    cout << "the a and b are:" << a << " " << b;
+   
     return 0;
 }
 
@@ -166,6 +167,7 @@ void checkpallindrome(int n){
         }
     }
     cout << "the number is pallindrome";
+    return;
 }
 int main(){
     int n;
@@ -182,9 +184,9 @@ void checkpallindrome(int n){
     n = abs(n);
     string s = to_string(n);
     string original = s;
-    string rev = s;
-    reverse(rev.begin(), rev.end());
-    if(rev == original){
+   
+    reverse(s.begin(), s.end());
+    if(s == original){
         cout << "the number is pallindrome";
         return;
     }
@@ -222,11 +224,11 @@ int main(){
     /*
 #include<bits/stdc++.h>
 using namespace std;
-void sumofdigits(int &n){
+void sumofdigits(int n){
     int sum = 0;
     int d ;
     if(n == 0){
-        cout << 0;
+        cout << "0";
         return;
     }
     if(n < 0){
@@ -253,7 +255,7 @@ int main(){
     /*
 #include<bits/stdc++.h>
 using namespace std;
-void countdigits(int &n){
+void countdigits(int n){
     int count = 0;
     if(n == 0){
         cout << 1;
@@ -317,31 +319,36 @@ int main(){
 #include<bits/stdc++.h>
 using namespace std;
 void armstrong( int n){
-    int d ;
-    int arm = 0;
+    int d = 0;
     int original = n;
-    int temp = n;
-    int digits = 0;
-    if(temp == 0){
+    if(n == 0){
         cout << "the number is armstrong";
         return;
     }
-    if(temp < 0){
+    if(n < 0){
         cout << "the number is not armstrong";
         return;
     }
-    while(temp > 0){
-        temp = temp / 10;
-        digits++;
+    
+     while(n > 0){
+        n = n / 10;
+        d++;
     }
-    temp = n;
+        n=original;
+    
+    
+    
+        int digits;
+        int sum = 0;
+   
+    
 
-    while(temp  > 0){
-        d = temp % 10;
-        arm = arm + pow(d,digits);
-        temp = temp / 10;
+    while(n  > 0){
+        digits = n % 10;
+        sum = sum + pow(digits,d);
+        n = n / 10;
     }
-    if(arm == original){
+    if(sum == original){
         cout << "the number is armstrong";
         return;
     }
@@ -386,7 +393,7 @@ int main(){
     /*
 #include<bits/stdc++.h>
 using namespace std;
-void checkprime(int &n){
+void checkprime(int n){
     if(n < 2){
         cout << "the number is not prime";
         return;
