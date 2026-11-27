@@ -233,6 +233,7 @@ int main(){
     */
 
 //LCM using GCD
+/*
 #include<bits/stdc++.h>
 using namespace std;
 int g(int a , int b){
@@ -252,6 +253,7 @@ int main(){
     return 0;
 
 }
+    */
 /*
 GCD/HCF Edge Cases (Interview Notes)
 
@@ -387,3 +389,44 @@ Large numbers → use long long
 
 Ye saare edge cases interviewer ekdum rapid-fire me pooch sakta hai. ✅
 */
+
+//LCM of 2 nos.
+//brute force
+/*
+#include<bits/stdc++.h>
+using namespace std;
+int LCM(int a, int b){
+    int maxi = max(a,b);
+    while(true){
+        if(maxi % a == 0 && maxi % b == 0){
+            
+            return maxi;
+        }
+        maxi++;
+    }
+}
+int main(){
+    int a, b;
+    cin >> a >> b;
+    cout << LCM(a,b);
+    return 0;
+}
+    */
+   //tc-o(a*b) --> Brute force max(a,b) se start karke LCM tak jaata hai. Worst case co-prime numbers me LCM = a*b hota hai, isliye TC ≈ O(a*b) hoti hai.
+   //sc-o(1)
+
+   // now lcm of 2 nos, optimal approach by using gcd thta is , lcm * gcd = a * b;
+   #include<bits/stdc++.h>
+   using namespace std;
+   
+   int main(){
+    int a, b;
+    cin >> a >> b;
+    int hcf = __gcd(a,b);
+    int lcm = (a/hcf) * b;
+    cout << lcm;
+    return 0;
+
+   }
+
+   //tc-o(log(min(a,b))) bcz hcf takes o(log(min(a,b))) and lcm = a/hcf * b takes o(1) and sc - o(1)
